@@ -1,4 +1,4 @@
-git clone https://forge.iut-larochelle.fr/lstanisl/pwssymfony.git
+git clone https://lstanisl@forge.iut-larochelle.fr/lstanisl/pwssymfony.git
 
 docker rm $(docker ps -q -a)
 docker compose up --build -d
