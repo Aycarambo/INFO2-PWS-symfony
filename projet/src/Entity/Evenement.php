@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvenementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,21 @@ class Evenement
      * @ORM\Column(type="string", length=150)
      */
     private $adresse;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Membre::class)
+     */
+    private $membres;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $evtcourant;
+
+    public function __construct()
+    {
+        $this->membres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +120,42 @@ class Evenement
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Membre[]
+     */
+    public function getMembres(): Collection
+    {
+        return $this->membres;
+    }
+
+    public function addMembre(Membre $membre): self
+    {
+        if (!$this->membres->contains($membre)) {
+            $this->membres[] = $membre;
+        }
+
+        return $this;
+    }
+
+    public function removeMembre(Membre $membre): self
+    {
+        $this->membres->removeElement($membre);
+
+        return $this;
+    }
+
+    public function getEvtcourant(): ?bool
+    {
+        return $this->evtcourant;
+    }
+
+    public function setEvtcourant(bool $evtcourant): self
+    {
+        $this->evtcourant = $evtcourant;
 
         return $this;
     }

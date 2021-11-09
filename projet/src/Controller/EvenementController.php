@@ -8,6 +8,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EvenementController extends AbstractController
 {
+    #[Route('/listevt', name: '“listevt”')]
+    public function “listevt”(): Response
+    {
+        $repository=$this->getDoctrine()->getManager()->getRepository('App\Entity\Evenement');
+        $evenements=$repository->findAll();
+        return $this->render('listevt/listevt.html.twig', [
+            'controller_name' => 'EvenementController',
+            'evenements' => $evenements,
+        ]);
+    }
     #[Route('/detailevt/{id?}', name: 'detail evt')]
     public function detailevt(?int $id): Response
     {

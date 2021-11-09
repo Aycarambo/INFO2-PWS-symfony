@@ -136,6 +136,7 @@
       <excludeFolder url="file://$MODULE_DIR$/projet/vendor/sebastian/global-state" />
       <excludeFolder url="file://$MODULE_DIR$/projet/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/projet/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/projet/vendor/symfony/apache-pack" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
